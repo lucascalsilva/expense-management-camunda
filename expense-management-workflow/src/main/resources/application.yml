@@ -1,0 +1,32 @@
+spring.datasource:
+  url: jdbc:h2:./target/expense-management-workflow.db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+  username: sa
+  password: sa
+spring.h2.console.enabled: true
+camunda.bpm:
+  default-serialization-format: application/json
+  admin-user:
+    id: demo
+    password: demo
+    firstName: Demo
+    email:
+  filter:
+    create: All tasks
+server.port: 8080
+exception:
+  messages:
+    requester-not-found: The requester provided was not found in Camunda BPM
+services:
+  erp:
+    timeout: 60000
+    url: http://localhost:8081
+    paths:
+      approvers: /common/approvers
+      invoices: /accounts-payable/invoices
+      emails: /notification/emails
+templates:
+  email-template: er-type-email-template.ftl
+  subject-template: er-type-email-subj-template.ftl
+  type-variable: type
+org.camunda.bpm.engine.persistence:
+  logging-level: debug

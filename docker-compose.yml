@@ -1,0 +1,14 @@
+version: '3'
+services:
+  expense-management-sql-application:
+    build: ./expense-management-sql-application
+    ports:
+      - 8081:8081
+    environment:
+      - SERVICES_PROCESS_ENGINE_URL=http://localhost:8080
+  expense-management-workflow:
+    build: ./expense-management-workflow
+    ports:
+      - 8080:8080
+    environment:
+      - SERVICES_ERP_URL=http://localhost:8081
